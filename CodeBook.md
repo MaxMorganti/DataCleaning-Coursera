@@ -1,4 +1,4 @@
-### Codebook:  
+# Codebook:  
   
 -------------------------------------------------------------------------------------  
 ## Human Activity Recognition Using Smartphones Dataset  
@@ -32,7 +32,7 @@ a vector of features was obtained by calculating variables from the time and fre
 domain. See 'features_info.txt' for more details. 
 
 
-# For each record it is provided:
+### For each record it is provided:
 - Triaxial acceleration from the accelerometer (total acceleration) and the estimated 
 body acceleration.
 - Triaxial Angular velocity from the gyroscope. 
@@ -43,10 +43,10 @@ body acceleration.
 -------------------------------------------------------------------------------------
 
 ## Source:
-# UCI HAR Dataset
+### UCI HAR Dataset
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-# Files Used:
+### Files Used:
 features.txt  : list of all features  
         
 test/subject_test.txt : identifies subject who performed activity for each window sample
@@ -59,7 +59,7 @@ train/y_train.txt  : training labels
 
 -------------------------------------------------------------------------------------
 
-## Features as described in original codebook: features_info.txt
+### Features as described in original codebook: features_info.txt
 
 The features selected for this database come from the accelerometer and gyroscope 
 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' 
@@ -99,7 +99,7 @@ fBodyAccJerkMag
 fBodyGyroMag
 fBodyGyroJerkMag
 
-# The set of variables that were estimated from these signals are: 
+### The set of variables that were estimated from these signals are: 
 
 mean(): Mean value
 std(): Standard deviation
@@ -119,7 +119,7 @@ kurtosis(): kurtosis of the frequency domain signal
 bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
 angle(): Angle between to vectors.
 
-# Additional vectors obtained by averaging the signals in a signal window sample. 
+### Additional vectors obtained by averaging the signals in a signal window sample. 
 #These are used on the angle() variable:
 
 gravityMean
@@ -133,13 +133,13 @@ tBodyGyroJerkMean
 -------------------------------------------------------------------------------------
 
 ## Output from run_analysis.R contains two dataframes inside of an R list:
-# 1st Element: Total dataset
+### 1st Element: Total dataset
 *mean() and std() calculations from all sensors (columns) for all measurements collected 
 (rows). (class: numeric)
 *Subject ID's have been included in column 'subject'. (class: factor)
 *Activity labels included in 'activity'. (class: factor)
 
-# 2nd Element: Summarized dataset
+### 2nd Element: Summarized dataset
 *mean of all former variables in 'total dataset' taken over all measurements for each
 activity performed by each subject
 *Subject ID's have been included in column 'subject'. (class: factor)
@@ -149,25 +149,25 @@ activity performed by each subject
 
 ## Transformation process in run_analysis:
 
-# 1. Merge together all original files to create on dataset with all data.
-*read in all data files (included under 'Files Used' section)
-*use features.txt file as column names for X-datasets
-*subject.txt labeled as 'subject' and y-files labeled as 'activity'
-*filter out columns from X-datasets that don't have 'mean()' or 'std()' using grep
-*cbind all columns belonging to test dataset together and repeat for train data
-*rbind train and test data together
-*rename numeric factors in 'activity' with more descriptive string labels
+### 1. Merge together all original files to create on dataset with all data.
+* read in all data files (included under 'Files Used' section)
+* use features.txt file as column names for X-datasets
+* subject.txt labeled as 'subject' and y-files labeled as 'activity'
+* filter out columns from X-datasets that don't have 'mean()' or 'std()' using grep
+* cbind all columns belonging to test dataset together and repeat for train data
+* rbind train and test data together
+* rename numeric factors in 'activity' with more descriptive string labels
 
 
-# 2. Create summarized dataset which has the mean of each variable for each activity and
+### 2. Create summarized dataset which has the mean of each variable for each activity and
 each subject.
-*convert previous dataframe to tbl_df format for use with dplyr package
-*group by subject, then activity
-*apply mean to all columns using summarize_all dplyr function
-*arrange (sort) resultant table by subject, then activity
-*convert back to dataframe
+* convert previous dataframe to tbl_df format for use with dplyr package
+* group by subject, then activity
+* apply mean to all columns using summarize_all dplyr function
+* arrange (sort) resultant table by subject, then activity
+* convert back to dataframe
 
-# 3. List object is returned containing 'total data' and 'summarized data'
+### 3. List object is returned containing 'total data' and 'summarized data'
 
 
 
